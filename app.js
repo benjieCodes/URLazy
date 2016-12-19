@@ -9,22 +9,25 @@ var express = require('express');
 var mappings = require('./data/mappings');
 var logger = require('./logger');
 
-var app = connect();
+var app = express();
 
 app.use(logger('redirector app'));
 
-app.use(function (req, res) {
-    mappings.get(req.url, function (err, mapping) {
-        var verb = req.method;
-        if (err) {
-            res.writeHead(404);
-            return res.end()
-        }
-
-        // returns user to website from the mappings
-        res.writeHead(302, {location: mapping });
-        res.end();
+app.get('/', function (req, res) {
+    res.send({
+        foo: 'bar',
+        baz: 23
     });
 });
+
+app.get('/:alias', function (req, res) {
+    mappings.get(req.params.alias, function (err, mapping) {
+        if (err) { res.send(404) }
+
+        // returns user to website from the mappings
+        res.redirect(mapping)
+    });
+});
+
 
 http.createServer(app).listen(3000)
