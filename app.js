@@ -1,21 +1,30 @@
 'use strict'
-
+// integrated modules
 var http = require('http');
-var mappings = require('./data/mappings')
 
-var server = http.createServer(function (req, res) {
+// third-party modules
+var connect = require('connect');
+
+// custom modules
+var mappings = require('./data/mappings'),
+    logger = require('./logger')
+
+var app = connect();
+
+app.use(logger)
+
+app.use(function (req, res) {
     mappings.get(req.url, function (err, mapping) {
-    var verb = req.method;
-    if (err) {
-        res.writeHead(404);
-        res.write('Sorry the alias was not found.' + ' (' + verb + ' REQUEST)')
-        return res.end()
-    }
+        var verb = req.method;
+        if (err) {
+            res.writeHead(404);
+            return res.end()
+        }
 
-    // returns user to website from the mappings
-    res.writeHead(302, {location: mapping });
-    res.end();
-    })
+        // returns user to website from the mappings
+        res.writeHead(302, {location: mapping });
+        res.end();
+    });
 });
 
-server.listen(3000); //sets this to lksocalhost:
+http.createServer(app).listen(3000)
