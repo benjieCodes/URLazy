@@ -1,21 +1,19 @@
 'use strict'
 
 var http = require('http');
-
-// this redirects us to different websites
-var mappings = {
-    g: 'http://www.google.com',
-    b: 'http://benjie.tech'
-};
+var mappings = require('./mappings')
 
 var server = http.createServer(function (req, res) {
     var alias = req.url.substring(1);
+    var verb = req.method;
 
-    // returns a 404 not found if no alias is found
     if (!mappings[alias]) {
         res.writeHead(404)
+        res.write('Sorry the alias: ' + alias + ' was not found.' + ' (' + verb + ' REQUEST)')
         return res.end()
     }
+
+    // returns user to website from the mappings
     res.writeHead(302, {
         location: mappings[alias]
     });
