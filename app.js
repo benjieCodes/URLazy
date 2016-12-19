@@ -1,6 +1,7 @@
 'use strict'
 // integrated modules
 var http = require('http');
+var path = require('path');
 
 // third-party modules
 var express = require('express');
@@ -11,12 +12,14 @@ var logger = require('./logger');
 
 var app = express();
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 app.use(logger('redirector app'));
 
 app.get('/', function (req, res) {
-    res.send({
-        foo: 'bar',
-        baz: 23
+    res.render('index', {
+        mappings: 'Hello world from EJS!'
     });
 });
 
@@ -30,4 +33,4 @@ app.get('/:alias', function (req, res) {
 });
 
 
-http.createServer(app).listen(3000)
+http.createServer(app).listen(3000);
