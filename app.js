@@ -32,5 +32,4 @@ app.get('/:alias', function (req, res) {
     });
 });
 
-
 http.createServer(app).listen(3000);
