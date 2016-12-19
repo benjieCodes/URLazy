@@ -6,8 +6,8 @@ var http = require('http');
 var connect = require('connect');
 
 // custom modules
-var mappings = require('./data/mappings'),
-    logger = require('./logger')
+var mappings = require('./data/mappings');
+var logger = require('./logger');
 
 var app = connect();
 
