@@ -1,8 +1,10 @@
 'use strict'
 
-var logger =(function (req, res, next) {
-    console.log(req.method + ' ' + req.url)
-    next()
-});
+var setup = function (appName) {
+    return function (req, res, next) {
+        console.log(appName + ': ' + req.method + ' ' + req.url);
+        next()
+    };
+};
 
-module.exports = logger;
+module.exports = setup;

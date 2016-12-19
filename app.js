@@ -11,7 +11,7 @@ var mappings = require('./data/mappings'),
 
 var app = connect();
 
-app.use(logger)
+app.use(logger('redirector app'));
 
 app.use(function (req, res) {
     mappings.get(req.url, function (err, mapping) {
