@@ -3,7 +3,7 @@
 var http = require('http');
 
 // third-party modules
-var connect = require('connect');
+var express = require('express');
 
 // custom modules
 var mappings = require('./data/mappings');
