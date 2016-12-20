@@ -8,9 +8,7 @@ var db = {
     mappings: new Datastore({ filename: path.join(__dirname, 'mappings.db'), autoload: true })
 };
 
-db.mappings.insert({ alias: 'g', url: 'http://www.google.com'}, function (err, insertedDocument) {
-    //...
-});
+
 
 var mappings = {
     get: function (alias, callback) {
@@ -18,6 +16,10 @@ var mappings = {
             if (err || !mapping) { return callback(new Error('Alias not found.')); }
         callback(null, mapping.url);
         });
+    },
+
+    create: function(alias, url, callback) {
+        db.mappings.insert({ alias: alias, url: url}, callback);
     }
 };
 
