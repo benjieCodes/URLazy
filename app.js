@@ -17,11 +17,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('redirector app'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-    res.render('index', {
-        mappings: documents
-    });
+    res.render('index');
 });
 
 app.get('/:alias', function (req, res) {
