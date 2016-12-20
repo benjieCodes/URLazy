@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>redirector: Mappings</title>
+        <script type="text/javascript" src="socket.io/socket.io.js"></script>
     </head>
 
     <body>
@@ -11,12 +12,6 @@
                 <th>Alias</th>
                 <th>URL</th>
             </tr>
-        <% for (var i = 0; i < mappings.length; i++) { %>
-            <tr>
-                <td><a href="/<%= mappings[i].alias %>"><%= mappings[i].alias %></a></td>
-                <td><%= mappings[i].url %></td>
-            </tr>
-            <% } %>
         </table>
     </body>
 </html>
