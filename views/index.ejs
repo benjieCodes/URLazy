@@ -13,7 +13,7 @@
             </tr>
         <% for (var i = 0; i < mappings.length; i++) { %>
             <tr>
-                <td><%= mappings[i].alias %></td>
+                <td><a href="/<%= mappings[i].alias %>"><%= mappings[i].alias %></a></td>
                 <td><%= mappings[i].url %></td>
             </tr>
             <% } %>
