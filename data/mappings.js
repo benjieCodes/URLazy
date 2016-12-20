@@ -20,6 +20,10 @@ var mappings = {
 
     create: function(alias, url, callback) {
         db.mappings.insert({ alias: alias, url: url}, callback);
+    },
+
+    list: function(callback) {
+        db.mappings.find({}).sort({ alias: 1}).exec(callback)
     }
 };
 
