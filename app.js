@@ -41,4 +41,11 @@ io.sockets.on('connection', function (socket) {
     mappings.list(function (err, documents) {
         socket.emit('list', documents);
     });
+
+    socket.on('addMapping', function (mapping) {
+        mappings.create(mapping.alias, mapping.url, function () {
+            io.sockets.emit('newMapping', mapping);
+        });
+    });
+
 });
