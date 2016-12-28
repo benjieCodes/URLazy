@@ -1,1 +1,1 @@
-# I want to node everything there is about Node *bad* *um* *tss*
+#Too busy to type the URL's like amazon.com or myspace.com? Who has time to do that, am I right? This app allows you to shortcut those words by creating shortcuts! You're welcome!!!
