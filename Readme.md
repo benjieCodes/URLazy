@@ -1,1 +1,1 @@
-#Too busy to type the URL's like amazon.com or myspace.com? Who has time to do that, am I right? This app allows you to shortcut those words by creating shortcuts! You're welcome!!!
+#Too busy to type the URL's like amazon.com or myspace.com? Who has time to do that, am I right? This app allows you to make it easier for you by creating shortcuts! You're welcome!!!
